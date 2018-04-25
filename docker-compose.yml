@@ -6,12 +6,14 @@ services:
     image: rabbitmq/rabbitmq:3.7.3-management
     build: ./rabbitmq
     restart: always
+    hostname: rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=user
     volumes:
       - rabbit-conf-storage:/etc/rabbitmq
       - rabbit-storage:/var/lib/rabbitmq
+      - rabbit-storage:/var/log/rabbitmq
     ports:
       - 15672:15672
       - 5672:5672
